@@ -4,10 +4,7 @@ export default function JobsTable(props) {
   const { jobs , jobStateSelect} = props ;
    
   const filteredJobsArrey = jobs.filter(job => job.status === jobStateSelect);
-
-  console.log(filteredJobsArrey);
-  
-
+ 
   if (filteredJobsArrey.length === 0) {
      return ( 
       <table className="table table-bordered ">

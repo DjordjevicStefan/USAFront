@@ -63,7 +63,7 @@ export default function WorkOrderJobs(props) {
                 Confirm:
                 <span className="">
                   
-                  <button onClick={() => onOk(job._id)} className="btn btn-sm mdc-button btn-dsp-block">
+                  <button onClick={(e) => onOk(e, job._id)} className="btn btn-sm mdc-button btn-dsp-block">
                     Ok
                   </button>
                 </span>

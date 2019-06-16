@@ -103,9 +103,10 @@ export default class WorkOrder extends Component {
     });
   };
 
-  handleOkButton = async id => {
+  handleOkButton = async (e, id )  => {
     const clickBtnId = id;
     
+
     //// check if vendor and date is selected
     const checkArrey = this.state.jobForSendArrey;
     let index = checkArrey.findIndex(x => x.jobId === clickBtnId);
@@ -119,6 +120,8 @@ export default class WorkOrder extends Component {
      //// data i need to populate assign function
      const workorder = this.state.workorder.workorder ;
      const job = jobsArrey.find(job => job._id === clickBtnId );
+
+     console.log(job);
      
      let selVendorId = null ;
      const vendorObj = checkArrey.find(job => job.jobId === clickBtnId ) ;
@@ -131,9 +134,8 @@ export default class WorkOrder extends Component {
      
      const vendorArrey = this.state.vendors ;
      const vendor = vendorArrey.find(vendor => vendor._id === selVendorId);
-     
-    if (firstCheck !== -1 && secondCheck !== -1 ) {
-         
+
+     if (firstCheck !== -1 && secondCheck !== -1 ) {
          
         async function test () {
           console.log( "jobid" , clickBtnId);
@@ -142,12 +144,20 @@ export default class WorkOrder extends Component {
           console.log( "jvendor" , vendor);
 
           const { data } = await  assignJob(clickBtnId, job, vendor, workorder); 
-          
-          console.log(data);
-          
+          if (data.success) {
+              const woAndJobs = this.state.workorder ;
+              const statusToEdit = woAndJobs.jobs.filter(job => job._id === clickBtnId);
+              statusToEdit[0].status = "sent" ;
+              this.setState({
+                workorder : woAndJobs 
+              })
+
+          } else {
+            toast.error("database error!");
+          }
          }
 
-         test()
+       test()
 
      } else {
       toast.error("please fill out all fields and date");
