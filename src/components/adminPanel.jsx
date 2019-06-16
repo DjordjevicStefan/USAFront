@@ -16,7 +16,7 @@ class AdminPanel extends Component {
     orders: null,
     users: null,
     btnStatus: "pending",
-    sortColumn: { path: "buildingNmb", order: "asc" }
+    sortColumn: { path: "buildingNumber", order: "asc" }
   };
 
   //// http request from the mongo database

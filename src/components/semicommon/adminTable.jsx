@@ -14,9 +14,14 @@ const AdminTable = ({ allOrders, status, onChange, onSort, sortColumn, checkEmpt
    //// changing asc/desc arrow depending on the user interaction
   let arrowIcon = path => {
     if (sortColumn.path === path) {
-      return (sortColumn.order === "asc") ? <i className="fa fa-sort-desc mr-2" /> : <i className="fa fa-sort-asc mr-2" /> ;
+     return (sortColumn.order === "asc") ? <i className="fa fa-sort-desc mr-2" /> : <i className="fa fa-sort-asc mr-2" /> ;
     }
+ 
+    
   };
+
+  ///// fa fa-sort-asc mr-2
+  ///// fa fa-sort-desc mr-2
 
   return (
     <div className="container">

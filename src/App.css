@@ -181,7 +181,7 @@
 
 /* custom navbar links  */
 
-a:hover, a:active {
+.my-nav a:hover, a:active {
   color: #ffff74 ;
 }
 

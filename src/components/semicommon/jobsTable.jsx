@@ -5,6 +5,9 @@ export default function JobsTable(props) {
    
   const filteredJobsArrey = jobs.filter(job => job.status === jobStateSelect);
 
+  console.log(filteredJobsArrey);
+  
+
   if (filteredJobsArrey.length === 0) {
      return ( 
       <table className="table table-bordered ">
@@ -19,17 +22,16 @@ export default function JobsTable(props) {
 
   return (
     <>
-      <table className="table table-bordered ">
-         
+      {filteredJobsArrey.map(job=> (
+          
+        <table key={job._id} className="table table-bordered ">
 
-         {filteredJobsArrey.map(job=> (
-           <>
            <thead>
              <tr>
             <th>Building num</th>
             <th>Apartment num</th>
             <th>Vendor</th>
-            <th>Assignment Date</th>
+            <th>End Date</th>
           </tr>
            </thead>
            <tbody>
@@ -46,10 +48,12 @@ export default function JobsTable(props) {
              <th>Quantity: <span className="font-weight-normal"> {job.quantity} </span></th>
            </tr>
            </tbody>
-           </>
+           </table>
+
+          
          ))}  
        
-      </table>
+      
     </>
   );
 }
